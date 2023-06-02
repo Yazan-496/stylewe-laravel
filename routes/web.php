@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use \App\Http\Controllers\Api;
+use \App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\URL;
 
 /*
@@ -32,5 +32,5 @@ Route::get('/dashboard', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware("auth");
-Route::get('/api/v1/users', [Api::class, 'GetUsers'])->name('users');
+Route::get('/users', [ApiController::class, 'GetUsers'])->name('user');
 
