@@ -1,8 +1,12 @@
 <?php
 
 //use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use \App\Http\Controllers\Api;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,4 +31,6 @@ Route::get('/dashboard', function () {
 }) -> name('not.adult');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware("auth");
+Route::get('/api/v1/users', [Api::class, 'GetUsers'])->name('users');
+

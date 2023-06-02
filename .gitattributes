@@ -9,3 +9,10 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+
+Host: sql7.freesqldatabase.com
+Database name: sql7623294
+Database user: sql7623294
+Database password: rhTzXRwJcM
+Port number: 3306
