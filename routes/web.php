@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use \App\Http\Controllers\ApiController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\AuthControllers\AuthController;
+
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,7 @@ use Illuminate\Support\Facades\URL;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
