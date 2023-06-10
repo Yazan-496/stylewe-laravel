@@ -32,6 +32,11 @@
         "VIEW_COMPILED_PATH": "/tmp",
         "APP_KEY": "base64:Y5wCJReUTrgqgO9M/HromiZ9TYdT+ZulV9paZHPxyH4=",
         "DB_CONNECTION": "mysql",
+        "DB_HOST": "sql10.freesqldatabase.com",
+        "DB_DATABASE": "sql10625112",
+        "DB_PORT": "3306",
+        "DB_USERNAME": "sql10625112",
+        "DB_PASSWORD": "MNxFNdv2M1",
 
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
