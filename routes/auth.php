@@ -11,6 +11,10 @@ Route::group(['prefix' => 'auth'], function() {
 
     Route::get('/user/delete/{email}', [AuthController::class, 'deleteUser']);
 
+    Route::get('/user/{email}', [AuthController::class, 'getUser']);
+
+    Route::get('/users', [AuthController::class, 'getAllUsers']);
+
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
     Route::get('/', function (){
         return "authenticate";

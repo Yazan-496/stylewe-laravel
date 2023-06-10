@@ -22,13 +22,14 @@ class AuthController extends Controller
                 'errors' => $validator->errors()
             ], 422);
         }
-        return User::create([
+         $User= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(80),
             'photo' => isset($data['photo']) ? $data['photo'] : "",
         ]);
+        return response()->json($User, 200);
     }
     public function loginUser(Request $request) {
         $data = $request->all();
@@ -76,6 +77,28 @@ class AuthController extends Controller
         } else {
             // Authentication failed
             return response()->json(['Error' => 'Delete Failed', 'message' => 'User Not Found'], 200);
+        }
+    }
+
+    public function getUser($email)
+    {
+        $userData = User::where(function ($query) use ($email) {
+                $query->orWhere('email', 'like', '%' . $email . '%');
+        })->get()->first();
+        if ($userData) {
+            return response()->json(["user" => $userData], 200);
+        } else {
+            return response()->json(['message' => 'User Not Found'], 200);
+        }
+    }
+
+    public function getAllUsers()
+    {
+        $users = User::all();
+        if ($users) {
+            return response()->json([$users], 200);
+        } else {
+            return response()->json(['message' => 'User Not Found'], 200);
         }
     }
 }

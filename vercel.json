@@ -6,12 +6,18 @@
     ],
     "routes": [
         {
-            "src": "/(css|js|images)/(.*)",
-            "dest": "public/$1/$2"
+            "src": "/api/.*",
+            "dest": "/api/index.php",
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Cache-Control": "max-age=0"
+            }
         },
         {
             "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/index.php"
         }
     ],
     "env": {
@@ -26,11 +32,6 @@
         "VIEW_COMPILED_PATH": "/tmp",
         "APP_KEY": "base64:Y5wCJReUTrgqgO9M/HromiZ9TYdT+ZulV9paZHPxyH4=",
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "sql8.freesqldatabase.com",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "sql8623410",
-        "DB_USERNAME": "sql8623410",
-        "DB_PASSWORD": "2tFtPSTI7m",
 
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
